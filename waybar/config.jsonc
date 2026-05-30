@@ -1,0 +1,119 @@
+{
+	"position":"top",
+	"margin-top":10,
+	"modules-left":["cpu","battery","memory","power-profiles-daemon","temperature"],
+	"modules-center":["hyprland/workspaces"],
+	"modules-right":["tray","clock","custom/cava","pulseaudio","network","custom/notification"],
+	"clock": {
+    		"interval": 60,
+    		"tooltip": true,
+    		"format": "{:%H.%M}",
+    		"tooltip-format": "{:%Y-%m-%d}"
+	},
+	"hyprland/workspaces": {
+	"format": "{name}"
+	},
+	"cpu": {
+     		"interval": 1,
+     		"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+     		"format-icons": [
+         		"<span color='#69ff94'>▁</span>", // green
+          		"<span color='#2aa9ff'>▂</span>", // blue
+          		"<span color='#f8f8f2'>▃</span>", // white
+			  "<span color='#f8f8f2'>▄</span>", // white
+			  "<span color='#ffffa5'>▅</span>", // yellow
+			  "<span color='#ffffa5'>▆</span>", // yellow
+			  "<span color='#ff9977'>▇</span>", // orange
+			  "<span color='#dd532e'>█</span>"  // red
+			]
+	},
+	"memory": {
+			"interval": 30,
+			"format": "{used:0.1f}G/{total:0.1f}G "
+			},
+	"power-profiles-daemon": {
+			  "format": "{icon}",
+			  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+			  "tooltip": true,
+			  "format-icons": {
+			    "default": "",
+			    "performance": "",
+			    "balanced": "",
+			    "power-saver": ""
+			  }},
+	"pulseaudio": {
+		  "format": "{volume}% {icon}",
+		  "format-bluetooth": "{volume}% {icon}",
+		  "format-muted":"󰝟",
+		  "format-icons": {
+			  "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+			  "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+			  "headphone": "",
+			  "hands-free": "",
+			  "headset": "",
+			  "phone": "",
+			  "phone-muted": "",
+			  "portable": "",
+			  "car": "",
+			  "default": ["", ""]
+		  },
+		  "scroll-step": 1,
+		  "on-click": "pavucontrol",
+		  "ignored-sinks": ["Easy Effects Sink"]
+		},
+	"tray": {
+		    "icon-size": 21,
+		    "spacing": 10 
+		},
+	"network": {
+		    "interface": "wlan0",
+		    "format": "{ifname}",
+		    "format-wifi": "{essid}  ",
+		    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+		    "format-disconnected": "", //An empty format will hide the module.
+		    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		    "tooltip-format-ethernet": "{ifname} ",
+		    "tooltip-format-disconnected": "Disconnected",
+		    "max-length": 50
+	},
+	"battery": {
+        "interval": 2,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+"custom/cava": {
+    "exec": "cava -p ~/.config/waybar/cava/cava.conf | sed -u 's/;/ /g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'",
+    "format": "{}",
+    "tooltip": false
+},
+  "temperature": {
+        "critical-threshold": 82, // takes unit: Celcius
+        "format": "{temperatureC}°C", // optionally, temperatureC
+        "interval": 1, // seconds between module updates
+    }
+}
+
+
+                           
+                      
+  
